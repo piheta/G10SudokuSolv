@@ -1,6 +1,7 @@
+
 public class SudokuValidator {
 
-    private static final int[][] sudoku = {
+    public static final int[][] sudoku = {
             {6, 2, 4, 5, 3, 9, 1, 8, 7},
             {5, 1, 9, 7, 2, 8, 6, 3, 4},
             {8, 3, 7, 6, 1, 4, 2, 9, 5},
@@ -11,5 +12,18 @@ public class SudokuValidator {
             {4, 9, 6, 1, 8, 2, 5, 7, 3},
             {2, 8, 5, 4, 7, 3, 9, 1, 6}
     };
+
+    public static void main(String[] args) throws InterruptedException {
+        RowValidator rowValidator = new RowValidator(0, 0);
+        new Thread(rowValidator).start();
+
+        Thread.sleep(5000);
+    }
+
+    public int[][] getSudoku() {
+        return sudoku;
+    }
+
+
 
 }
