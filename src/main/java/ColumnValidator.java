@@ -21,7 +21,8 @@ public class ColumnValidator extends Worker {
             }
             int[] validityArray = createValidityArray(arrayToValidate);
             if (arrayContainsNumber(validityArray, 0)) {
-                System.out.println(Arrays.toString(validityArray));
+                i++; //so that row starts with 1 in the print message
+                System.out.println("Column " + i + ": Duplicate number found at idnexes: " + Arrays.toString(findIndices(validityArray,0)));
             }
         }
     }

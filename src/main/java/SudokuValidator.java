@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 public class SudokuValidator {
 
     public static int[][] sudoku = {
-            {1, 2, 4, 5, 3, 9, 1, 8, 7},
+            {6, 2, 4, 5, 3, 9, 1, 8, 7},
             {5, 1, 9, 7, 2, 8, 6, 3, 4},
             {8, 3, 7, 6, 1, 4, 2, 9, 5},
             {1, 4, 3, 8, 6, 5, 7, 2, 9},
@@ -15,6 +15,7 @@ public class SudokuValidator {
     };
 
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
+        System.out.println("Welcome to group's 10 Sudoku Project!");
         sudoku = new CsvImporter().run();
 
         RowValidator rowValidator = new RowValidator(0, 0);
