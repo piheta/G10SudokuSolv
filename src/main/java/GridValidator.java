@@ -9,17 +9,24 @@ public class GridValidator implements Runnable{
      * Checks the inputed matrix for duplicates in each 3x3 matrix
      */
     public void run(){
+        String output = "";
         for (int i = 0; i < 9; i++) {
-            System.out.println(smallSquareValidator(splitBigMatrix(matrixToValidate).get(i)));
+            output = smallSquareValidator(splitBigMatrix(matrixToValidate).get(i));
+
+            if (output.length() > 10){
+                i++;
+                System.out.println(output + " AT grid " + i);
+            }
         }
     }
+
 
     /*
      * Checks if there is a duplicate in a 3x3 matrix
      */
-    public static String smallSquareValidator(int[][] matrix){
+    public String smallSquareValidator(int[][] matrix){
         ArrayList<String> existing = new ArrayList<>();
-        String dupe = "Correct!";
+        String dupe = "";
 
         for (int i = 0; i < matrix.length; i++) { //this equals to the row in our matrix.
             for (int j = 0; j < matrix[i].length; j++) { //this equals to the column in each row.
@@ -27,7 +34,7 @@ public class GridValidator implements Runnable{
                     int duplicate = matrix[i][j];
                     int column = i + 1;
                     int row = j + 1;
-                    dupe = "Duplicate number " + duplicate + " found at row " + row + " column " + column;
+                    dupe = "Grid: Duplicate number " + duplicate + " found at row " + row + " column " + column;
                 } else {
                     existing.add(matrix[i][j] + " ");
                 }
