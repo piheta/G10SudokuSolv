@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 
 public class SudokuValidator {
 
@@ -13,11 +14,12 @@ public class SudokuValidator {
             {2, 8, 5, 4, 7, 3, 9, 1, 6}
     };
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, FileNotFoundException {
         RowValidator rowValidator = new RowValidator(0, 0);
         ColumnValidator columnValidator = new ColumnValidator(0, 0);
         new Thread(rowValidator).start();
         new Thread(columnValidator).start();
+        GridValidator.run(sudoku);
 
         Thread.sleep(5000);
     }
