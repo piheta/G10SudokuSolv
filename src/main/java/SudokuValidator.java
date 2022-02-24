@@ -15,7 +15,9 @@ public class SudokuValidator {
 
     public static void main(String[] args) throws InterruptedException {
         RowValidator rowValidator = new RowValidator(0, 0);
+        ColumnValidator columnValidator = new ColumnValidator(0, 0);
         new Thread(rowValidator).start();
+        new Thread(columnValidator).start();
 
         Thread.sleep(5000);
     }
