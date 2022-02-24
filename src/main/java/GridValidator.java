@@ -1,18 +1,22 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class GridValidator {
+public class GridValidator implements Runnable{
+
+    int[][] matrixToValidate = SudokuValidator.sudoku;
 
     /*
-    * Checks the inputed matrix for duplicates in each 3x3 matrix
-    */
-    public static void  run(int[][] matrix) throws FileNotFoundException {
-
+     * Checks the inputed matrix for duplicates in each 3x3 matrix
+     */
+    public void run(){
         for (int i = 0; i < 9; i++) {
-            System.out.println(smallSquareValidator(splitBigMatrix(matrix).get(i)));
+            System.out.println(smallSquareValidator(splitBigMatrix(matrixToValidate).get(i)));
         }
     }
 
+    /*
+     * Checks if there is a duplicate in a 3x3 matrix
+     */
     public static String smallSquareValidator(int[][] matrix){
         ArrayList<String> existing = new ArrayList<>();
         String dupe = "Correct!";
@@ -32,6 +36,9 @@ public class GridValidator {
         return dupe;
     }
 
+    /*
+     * Splits the 9x9 array into 9 3x3 arrays
+     */
     public static ArrayList<int[][]> splitBigMatrix(int[][] matrix){
         ArrayList<int[][]> allMatrixes = new ArrayList<>();
         int[][] matrix0 = new int[3][3];
