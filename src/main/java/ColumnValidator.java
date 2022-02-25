@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class ColumnValidator extends Worker {
-
+    String output = "correct";
     private int[] arrayToValidate;
 
     public ColumnValidator(int row, int col) {
@@ -22,7 +22,7 @@ public class ColumnValidator extends Worker {
             int[] validityArray = createValidityArray(arrayToValidate);
             if (arrayContainsNumber(validityArray, 0)) {
                 i++; //so that row starts with 1 in the print message
-                System.out.println("Column " + i + ": Duplicate number found at idnexes: " + Arrays.toString(findIndices(validityArray,0)));
+                output = "Column " + i + ": Duplicate number found at idnexes: " + Arrays.toString(findIndices(validityArray,0));
             }
         }
     }

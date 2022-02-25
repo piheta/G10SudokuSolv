@@ -2,23 +2,24 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class GridValidator implements Runnable{
-
+    String output = "correct";
     int[][] matrixToValidate = SudokuValidator.sudoku;
 
     /*
      * Checks the inputed matrix for duplicates in each 3x3 matrix
      */
     public void run(){
-        String output = "";
+        String allGridOutput = "";
         for (int i = 0; i < 9; i++) {
-            output = smallSquareValidator(splitBigMatrix(matrixToValidate).get(i));
+            allGridOutput = smallSquareValidator(splitBigMatrix(matrixToValidate).get(i));
 
-            if (output.length() > 10){
-                i++;
-                System.out.println(output + " AT grid " + i);
+            if (allGridOutput.length() > 10){
+                i++; //so that if there is a duplicate at grid 1 it says 1 instead of
+                output = allGridOutput + " AT grid " + i;
             }
         }
     }
+
 
 
     /*

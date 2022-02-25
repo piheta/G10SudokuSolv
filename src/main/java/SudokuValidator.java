@@ -15,17 +15,27 @@ public class SudokuValidator {
     };
 
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
+
         System.out.println("Welcome to group's 10 Sudoku Project!");
         sudoku = new CsvImporter().run();
 
         RowValidator rowValidator = new RowValidator(0, 0);
         ColumnValidator columnValidator = new ColumnValidator(0, 0);
         GridValidator gridValidator = new GridValidator();
+
         new Thread(rowValidator).start();
         new Thread(columnValidator).start();
         new Thread(gridValidator).start();
-
         Thread.sleep(5000);
+
+
+        if (rowValidator.output.equals("correct") && columnValidator.output.equals("correct") && gridValidator.output.equals("correct")){
+            System.out.println("The Sudoku is Correct!");
+        } else {
+            System.out.println(rowValidator.output);
+            System.out.println(columnValidator.output);
+            System.out.println(gridValidator.output);
+        }
     }
 
     public int[][] getSudoku() {
