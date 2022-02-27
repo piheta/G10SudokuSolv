@@ -15,7 +15,7 @@ public class CsvImporter {
         try {
             System.out.println("Input file path >");
             file = new File(myObj.nextLine()); //Input dir
-            System.out.println("Loading file... ");  // Output user input
+            System.out.println("Loading... ");  // Output user input
 
         } catch (IllegalArgumentException iae) {
             System.out.println("File Not Found");
@@ -30,6 +30,11 @@ public class CsvImporter {
     */
     public String getFileString(File path) throws FileNotFoundException {
         //No need for a try-cache since it checks for it above
+        if (!path.exists()){
+            System.out.println("FILE NOT FOUND");
+            System.exit(0);
+        }
+
         Scanner myReader = new Scanner(path);
         String data = myReader.nextLine();
         return data;
@@ -46,6 +51,18 @@ public class CsvImporter {
                 testArray.add(Integer.parseInt(String.valueOf(data.charAt(i))));
             }
         }
+
+        //Stop the program if the file is invalid format
+        if (!(testArray.size() == 81)){
+            System.out.println(" ");
+            System.out.println("File invalid fomat");
+            System.out.println("Sudoku must be in a single line with 81 numbers");
+            System.out.println("Numbers found in your file: " + testArray.size());
+            System.out.println(" ");
+            System.out.println("View src/main/resources/exmaple.csv for an example");
+            System.exit(0);
+        }
+
         return testArray;
     }
 
